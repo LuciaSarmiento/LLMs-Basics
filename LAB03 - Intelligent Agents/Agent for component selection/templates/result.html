@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Components</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Results</h1>
+        <p><strong>Proyect description:</strong> {{ description }}</p>
+
+        {% for category, items in selection.items() %}
+        <h2>{{ category }}</h2>
+        <table>
+            <tr>
+                <th>Component</th>
+                <th>Model</th>
+                <th>Price (USD)</th>
+            </tr>
+            {% for item in items %}
+            <tr>
+                <td>{{ item['Component'] }}</td>
+                <td>{{ item['Model'] }}</td>
+                <td>${{ item['Price (USD)'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endfor %}
+
+        <a href="/">Return</a>
+    </div>
+</body>
+</html>
